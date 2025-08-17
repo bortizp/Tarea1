@@ -38,13 +38,30 @@ def aprobados(estudiantes):
 def moda(estudiantes):
     todas_las_notas = [nota for estudiante in estudiantes for nota in estudiante["notas"]]
     try:
+        # importe mode de statistics
         moda_notas = mode(todas_las_notas)
         print(f"La nota que más se repite es: {moda_notas}")
+    # Si no hay moda, se lanza una StatisticsError
     except StatisticsError:
         print("No se pudo determinar la moda.")
     print(50*"*")
 
+#4. Que porcentaje de estudiantes tiene al menos una nota bajo 4.0?
+def calcular_porcentaje_cuatro(estudiantes):
+    cantidad_de_estudiantes = len(estudiantes)
+    """any() devuelve True si encuentra al menos una nota bajo 4.0,
+    y False en caso contrario."""
+    estudiantes_bajo_cuatro = sum(1 for estudiante in estudiantes if any(nota < 4.0 for nota in estudiante["notas"])) 
+    porcentaje = (estudiantes_bajo_cuatro / cantidad_de_estudiantes) * 100
+    print(f"Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2f}%")
+    print(50*"*")
+
+
+
+
+    
+
 calcular_promedio(estudiantes)
 aprobados(estudiantes)
 moda(estudiantes)
-
+calcular_porcentaje_cuatro(estudiantes)
