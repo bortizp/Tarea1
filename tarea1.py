@@ -56,12 +56,20 @@ def calcular_porcentaje_cuatro(estudiantes):
     print(f"Porcentaje de estudiantes con al menos una nota bajo 4.0: {porcentaje:.2f}%")
     print(50*"*")
 
+#5. entrega un listado ordenado (de mayor a menor) de los estudiantes segun su promedio. 
+def listado_estudiantes_promedio(estudiantes):
+    estudiantes_ordenados = sorted(estudiantes, key=lambda x:x["promedio"], reverse=True)
+    print("Listado de estudiantes ordenados por promedio (de mayor a menor):")
+    for estudiante in estudiantes_ordenados:
+        print(f"{estudiante['nombre']}: {estudiante['promedio']}")
+    print(50*"*")
 
 
 
-    
+
 
 calcular_promedio(estudiantes)
 aprobados(estudiantes)
 moda(estudiantes)
 calcular_porcentaje_cuatro(estudiantes)
+listado_estudiantes_promedio(estudiantes)
